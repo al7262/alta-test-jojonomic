@@ -1,0 +1,66 @@
+.gap-25 {
+  height: 25px;
+}
+.gap-50 {
+  height: 50px;
+}
+.gap-100 {
+  height: 100px;
+}
+.gap-125 {
+  height: 125px;
+}
+.gap-150 {
+  height: 150px;
+}
+.gap-200 {
+  height: 200px;
+}
+.area-choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #a62317;
+  border-radius: 20px;
+  padding: 20px;
+}
+.area-choice h2 {
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.area-choice .area-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.area-choice .area-form select {
+  margin-right: 10px;
+  width: 100%;
+  max-width: 300px;
+}
+.area-choice .area-form .btn-find {
+  background-color: #5b8136;
+  border-color: #497320;
+  color: white;
+}
+.area-choice .area-form .btn-find:hover {
+  background-color: #497320;
+}
+.area-choice .area-form .btn-find:active {
+  background-color: #809d63;
+  border-color: #809d63;
+}
+@media (max-width: 512px) {
+  .area-choice .area-form {
+    flex-direction: column;
+  }
+  .area-choice .area-form select {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
