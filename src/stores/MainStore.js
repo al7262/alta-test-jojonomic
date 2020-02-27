@@ -85,6 +85,10 @@ export const actions = (store) => ({
         })
     },
 
+    getAreaTeam: async(state) => {
+
+    },
+
     handleError: async (state) => {
         if(state.error!==undefined){
           await swal.fire({
