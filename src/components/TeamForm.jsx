@@ -29,7 +29,7 @@ const TeamForm = (props) => {
                             <option value="" disabled selected>Loading...</option>
                             :
                             <React.Fragment>
-                                <option value="" disabled selected>Select Region</option>
+                                <option value="" disabled selected>Select Area</option>
                                 {props.regionArea.map(element=>(
                                     <option value={element.id}>{element.name}</option>
                                 ))}

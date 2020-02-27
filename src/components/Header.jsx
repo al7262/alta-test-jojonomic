@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../images/logo.svg';
-import '../styles/header.css'
+import '../styles/header.css';
 
 // Stateless component for header
 const Header = (props) => {
     return (
         <React.Fragment>
-            <nav className="navbar navbar-expand-lg navbar-light bg-red shadow-sm header">
+            <nav className="navbar navbar-expand-lg navbar-light bg-red shadow-sm fixed-top header">
                 <Link className="navbar-brand mr-5" to="/">
                     <img className="mr-1" src={logo} alt="website-logo"/>
                     <span>SoccerManic</span>
