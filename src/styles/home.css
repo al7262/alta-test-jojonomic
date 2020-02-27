@@ -46,6 +46,7 @@
   flex-direction: column;
 }
 .container-home .content .logo {
+  margin-top: 56px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,4 +64,9 @@
   font-size: 40px;
   font-weight: 900;
   color: black;
+}
+@media (max-height: 512px) {
+  .container-home .content .logo h1 {
+    font-size: 60px;
+  }
 }
