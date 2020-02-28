@@ -1,1 +1,108 @@
 @import 'basic.less';
+
+.container-area{
+    height: 100vh;
+    .background{
+        height: 100%;
+        position: fixed;
+        z-index: -1000;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .background-mask{
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            background-color: @green-light2;
+            opacity: 0.5;
+        }
+    }
+
+    .container{
+        max-width: 967px;
+        padding-top: 70px;
+        padding-bottom: 14px;
+        .area-name{
+            background-color: @red;
+            color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            h3{
+                margin: 0;
+            }
+            .btn-change{
+                color: @green-light2;
+                text-decoration: underline;
+                text-transform: capitalize;
+            }
+        }
+        #area-form{
+            margin-bottom: 10px;
+        }
+
+        .content-box{
+            padding: 10px;
+            background-color: white;
+            height: ~'calc(100vh - 147px)';
+            border-radius: 20px;
+            overflow: auto;
+            .row{
+                padding: 0;
+                margin: 0;
+            }
+            .outer-box{
+                padding: 10px;
+            }
+            h1{
+                width: 100%;
+                margin-top: 50px;
+                text-align: center;
+            }
+            .item-box{
+                border-radius: 20px;
+                background-color: @green-dark1;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                img{
+                    height: 150px;
+                    max-width: 150px;
+                }
+                h3{
+                    font-weight: 700;
+                    color: white;
+                    text-align: center;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: 100%;
+                }
+                &:hover{
+                    box-shadow: 2px 2px 5px @green-light4;
+                }
+                .btn-details{
+                    background-color: @green-light2;
+                    border-color: @green-light2;
+                    color: @green-dark3;
+                    &:hover{
+                        background-color: @green-light3;
+                    }
+                    &:active{
+                        background-color: @green-light4;
+                        border-color: @green-light4;
+                    }
+                }
+            }
+        }
+    }
+
+}
