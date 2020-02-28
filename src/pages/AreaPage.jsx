@@ -4,20 +4,28 @@ import { connect } from "unistore/react";
 import { actions } from "../stores/MainStore";
 import '../styles/area.css';
 import background from '../images/background.jpeg';
-import noimage from '../images/noimage.png';
 
 import Header from '../components/Header';
 import AreaForm from '../components/AreaForm';
+import TeamList from '../components/TeamList';
+import TeamInfoModal from '../components/TeamInfoModal';
+import Swal from 'sweetalert2';
 
 class AreaPage extends React.Component {
+    state = {
+        showTeamInfo: false
+    }
+
     componentDidMount(){
         if(this.props.worldArea===undefined){
             this.props.getWorldChildArea()
         }
     }
+
     componentDidUpdate(){
         this.props.handleError()
     }
+
     areaFormButton = () => {
         this.props.getAreaTeam()
         const selectedArea = this.props.regionArea.filter(element=>{
@@ -26,6 +34,21 @@ class AreaPage extends React.Component {
         let name = selectedArea[0].name.replace(' ', '-').toLowerCase()
         this.props.history.push('/area/'+name)
     }
+
+    teamDetailButton = (id) => {
+        this.props.getTeamInfo(id)
+        this.setState({showTeamInfo:true})
+    }
+
+    closeTeamInfoModal = () => {
+        this.props.emptyData('teamInfo')
+        this.setState({showTeamInfo:false})
+    }
+
+    memberInfoButton = () => {
+
+    }
+
     render(){
         let areaName = this.props.match.params.area
         console.log(areaName)
@@ -72,23 +95,27 @@ class AreaPage extends React.Component {
                                         <h1>There is no team in this area</h1>
                                         :
                                         this.props.teamList.map(element=>(
-                                        <div className="col-lg-4 col-12 col-sm-6 outer-box">
-                                            <div className="item-box">
-                                                {console.log(element.crestUrl)}
-                                                <img src={element.crestUrl!==null&&element.crestUrl!==''?element.crestUrl:noimage} alt="club-crest"
-                                                    className={element.crestUrl===null||element.crestUrl===''?'rounded-circle':''}/>
-                                                <h3>{element.name}</h3>
-                                                <Link className="btn btn-details">See Details</Link>
-                                            </div>
-                                        </div>
+                                            <TeamList
+                                                name={element.name}
+                                                id={element.id}
+                                                image={element.crestUrl}
+                                                handleOnClick={this.teamDetailButton}
+                                            />
                                         ))
                                 }
                             </div>
                         </div>
                     </div>
                 </div>
+                {console.log(this.props.teamInfo)}
+                <TeamInfoModal
+                    show={this.state.showTeamInfo}
+                    handleClose={this.closeTeamInfoModal}
+                    loadData={this.props.loadTeamInfo}
+                    data={this.props.teamInfo}
+                    />
             </React.Fragment>
         )
     }
 }
-export default connect('worldArea, loadWorldArea, selectedRegionId, regionArea, loadRegionArea, selectedAreaId, teamList, loadTeamList', actions)(withRouter(AreaPage));
+export default connect('worldArea, loadWorldArea, selectedRegionId, regionArea, loadRegionArea, selectedAreaId, teamList, loadTeamList, teamInfo, loadTeamInfo', actions)(withRouter(AreaPage));

@@ -13,7 +13,9 @@ const initialState = {
     selectedRegionId: undefined,
     selectedAreaId: '',
     teamList: undefined,
-    loadTeamList: true,
+    loadTeamList: false,
+    teamInfo: undefined,
+    loadTeamInfo: false,
 };
 
 export const store = createStore(initialState);
@@ -116,6 +118,38 @@ export const actions = (store) => ({
         .catch(error=>{
             console.log(error)
         })
+    },
+
+    getTeamInfo: (state, id) => {
+        store.setState({loadTeamInfo:true})
+        const input = {
+            method: 'get',
+            headers: {
+                'X-Auth-Token': state.apiToken,
+            },
+            url: state.baseUrl+'teams/'+id,
+            validateStatus: (status) => {
+                return status<500
+            }
+        };
+        axios(input)
+        .then(async response=>{
+            if(response.status===200){
+                await store.setState({
+                    teamInfo: response.data,
+                    loadTeamInfo: false
+                })
+            } else{
+                await store.setState({error: response.data})
+            }
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    },
+
+    emptyData: (state, key) => {
+        store.setState({[key]: undefined})
     },
 
     handleError: async (state) => {
