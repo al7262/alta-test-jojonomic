@@ -5,12 +5,15 @@ import swal from 'sweetalert2';
 const initialState = {
     baseUrl: 'https://api.football-data.org/v2/',
     apiToken: 'a1b4d039210f4729ab8cd931a0c11586',
+    error: undefined,
     worldArea: undefined,
     loadWorldArea: true,
     regionArea: undefined,
     loadRegionArea: false,
     selectedRegionId: undefined,
     selectedAreaId: '',
+    teamList: undefined,
+    loadTeamList: true,
 };
 
 export const store = createStore(initialState);
@@ -54,7 +57,6 @@ export const actions = (store) => ({
             selectedRegionId: value,
             selectedAreaId: ''
         })
-        console.log(store.getState().selectedRegionId)
         const input = {
             method: 'get',
             headers: {
@@ -75,6 +77,37 @@ export const actions = (store) => ({
                 await store.setState({
                     regionArea: childAreas,
                     loadRegionArea: false
+                })
+            } else{
+                await store.setState({error: response.data})
+            }
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    },
+
+    getAreaTeam: async(state) => {
+        store.setState({loadTeamList:true})
+        const input = {
+            method: 'get',
+            headers: {
+                'X-Auth-Token': state.apiToken,
+            },
+            url: state.baseUrl+'teams',
+            params:{
+                areas: state.selectedAreaId
+            },
+            validateStatus: (status) => {
+                return status<500
+            }
+        };
+        axios(input)
+        .then(async response=>{
+            if(response.status===200){
+                await store.setState({
+                    teamList: response.data.teams,
+                    loadTeamList: false
                 })
             } else{
                 await store.setState({error: response.data})

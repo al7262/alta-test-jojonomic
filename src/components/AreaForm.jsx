@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import '../styles/team-form.css';
 
 // Stateless component for header
-const TeamForm = (props) => {
+const AreaForm = (props) => {
     return (
         <React.Fragment>
             <div className="area-choice">
@@ -43,4 +43,4 @@ const TeamForm = (props) => {
     )
 }
 
-export default TeamForm;
+export default AreaForm;

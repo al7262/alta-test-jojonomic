@@ -5,6 +5,7 @@ import { Provider } from 'unistore/react';
 import { store } from '../stores/MainStore';
 
 import HomePage from '../pages/HomePage';
+import AreaPage from '../pages/AreaPage';
 
 const Mainroute = () => {
     return (
@@ -12,6 +13,8 @@ const Mainroute = () => {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={HomePage}/>
+                    <Route exact path="/area" component={AreaPage}/>
+                    <Route exact path="/area/:area" component={AreaPage}/>
                 </Switch>
             </BrowserRouter>
         </Provider>

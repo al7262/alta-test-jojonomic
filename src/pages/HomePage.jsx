@@ -7,14 +7,17 @@ import background from '../images/background.jpeg';
 import logo from '../images/logo.svg'
 
 import Header from '../components/Header';
-import TeamForm from '../components/TeamForm';
+import AreaForm from '../components/AreaForm';
 
 class HomePage extends React.Component {
     componentDidMount(){
         this.props.getWorldChildArea()
     }
+    componentDidUpdate(){
+        this.props.handleError()
+    }
     teamFormButton = () => {
-        // this.props.getAreaTeam()
+        this.props.getAreaTeam()
         const selectedArea = this.props.regionArea.filter(element=>{
             return element.id===parseInt(this.props.selectedAreaId)
         })
@@ -35,7 +38,7 @@ class HomePage extends React.Component {
                             <img src={logo} alt="website-logo"/>
                             <h1>SoccerManic</h1>
                         </div>
-                        <TeamForm
+                        <AreaForm
                             handleOnClick = {this.teamFormButton}
                             {...this.props}/>
                     </div>
