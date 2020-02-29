@@ -9,11 +9,12 @@ import Header from '../components/Header';
 import AreaForm from '../components/AreaForm';
 import TeamList from '../components/TeamList';
 import TeamInfoModal from '../components/TeamInfoModal';
-import Swal from 'sweetalert2';
+import MemberInfoModal from '../components/MemberInfoModal';
 
 class AreaPage extends React.Component {
     state = {
-        showTeamInfo: false
+        showTeamInfo: false,
+        showMemberInfo: false,
     }
 
     componentDidMount(){
@@ -43,6 +44,17 @@ class AreaPage extends React.Component {
     closeTeamInfoModal = () => {
         this.props.emptyData('teamInfo')
         this.setState({showTeamInfo:false})
+    }
+
+    memberDetailButton = (id) => {
+        console.log('clicking member lol')
+        this.props.getMemberInfo(id)
+        this.setState({showMemberInfo:true})
+    }
+
+    closeMemberInfoModal = () => {
+        this.props.emptyData('memberInfo')
+        this.setState({showMemberInfo:false})
     }
 
     memberInfoButton = () => {
@@ -107,15 +119,21 @@ class AreaPage extends React.Component {
                         </div>
                     </div>
                 </div>
-                {console.log(this.props.teamInfo)}
                 <TeamInfoModal
                     show={this.state.showTeamInfo}
                     handleClose={this.closeTeamInfoModal}
                     loadData={this.props.loadTeamInfo}
                     data={this.props.teamInfo}
+                    handleOnClick={this.memberDetailButton}
+                    />
+                <MemberInfoModal
+                    show={this.state.showMemberInfo}
+                    handleClose={this.closeMemberInfoModal}
+                    loadData={this.props.loadMemberInfo}
+                    data={this.props.memberInfo}
                     />
             </React.Fragment>
         )
     }
 }
-export default connect('worldArea, loadWorldArea, selectedRegionId, regionArea, loadRegionArea, selectedAreaId, teamList, loadTeamList, teamInfo, loadTeamInfo', actions)(withRouter(AreaPage));
+export default connect('worldArea, loadWorldArea, selectedRegionId, regionArea, loadRegionArea, selectedAreaId, teamList, loadTeamList, teamInfo, loadTeamInfo, memberInfo, loadMemberInfo', actions)(withRouter(AreaPage));
