@@ -62,7 +62,7 @@ const TeamInfoModal = (props) => {
                                 <h3 className="m-0 font-weight-bold">Club Member</h3>
                                 <div className="member-list">
                                     {props.data.squad.map(element=>(
-                                        <Link className="member">
+                                        <Link className="member" onClick={()=>props.handleOnClick(element.id)}>
                                             {element.name}
                                         </Link>
                                         ))
