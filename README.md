@@ -12,6 +12,28 @@ https://www.football-data.org/
 
 The purpose of this project is to show data from API regarding the team in specific area and detail of the member of the team.
 
+## Application Guide
+###### Home Page
+ - Header on the top can be used to navigate to another page
+ - Searching can be done by choosing region available in the homepage
+ - After choosing region, the area that is in that region can be choosen
+   - If the region doesn't have any area under the region then it will shown the region's name
+   - The region shown is based on the region that is have 'world' as it's parent area in the data from api
+   - The region might not be the same with the real region on the map
+ - When area have been choosen, then the button can be clicked to search the team in that area
+ - The click on button will redirect to the area page
+
+###### Area Page
+ - Header on the top can be used to navigate to another page
+ - When the area page accessed through header, then user have to search for area first to get the list of the team
+ - If page was the result of being directed from searching in homepage then it will immediatly show the list of the team
+ - Searching can be done by choosing region and area available on the top
+ - After choosing region, the area that is in that region can be choosen
+   - If the region doesn't have any area under the region then it will shown the region's name
+   - The region shown is based on the region that is have 'world' as it's parent area in the data from api
+   - The region might not be the same with the real region on the map
+ - When area have been choosen, then the button can be clicked to search the team in that area
+
 ## Available Scripts
 
 In the project directory, you can run:
