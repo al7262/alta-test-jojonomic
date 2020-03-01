@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Description
+This project is made using react-js and several npm modules such as:
+ - axios
+ - react-router-dom
+ - react-bootstrap
+ - unistore
+
+This project used external api from: 
+https://www.football-data.org/
+
+The purpose of this project is to show data from API regarding the team in specific area and detail of the member of the team.
+
 ## Available Scripts
 
 In the project directory, you can run:
