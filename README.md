@@ -1,16 +1,40 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Project Description
+###### React and NPM Modules
 This project is made using react-js and several npm modules such as:
  - axios
+ - react
  - react-router-dom
  - react-bootstrap
  - unistore
+ - sweetalert2
 
+###### External API
 This project used external api from: 
 https://www.football-data.org/
 
-The purpose of this project is to show data from API regarding the team in specific area and detail of the member of the team.
+###### Features
+The features that is available in this project is:
+ - searching team based on area in region
+ - looking team details
+ - looking member details in the team
+
+###### Extra Works
+There are several things that was made in order to improve user experience while using the application, such as:
+ - Using Modal to show details so no page wasted
+ - Simple and straightforward homepage
+
+###### Deployment
+The deployment was using netlify.com, so it will be automatically updated everytime the commit was pushed into **release** branch
+
+###### Setup Instruction
+To run the project please do this first:
+ - Install all the modules from NPM
+ - make sure the api key for external api already correct (or just used the api key in the *MainStore.js*)
+   - register to the website stated in external api to get the api key
+   - api key will be sent to your email after register
+   - update the *apiKey* state in *MainStore.js*
 
 ## Application Guide
 ###### Home Page
